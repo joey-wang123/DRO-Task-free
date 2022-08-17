@@ -6,7 +6,9 @@
 - Pytorch 1.8.1
 
 
+## Download DataSet
 
+Download mini-ImageNet dataset from [here](https://drive.google.com/file/d/1Qkng7kPnL5akXzqvsjLMuP5rFfFZXYy0/view?usp=sharing) and put the dataset into the '/Data' folder.
 
 ## Running Experiments
 

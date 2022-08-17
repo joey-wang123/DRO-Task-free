@@ -226,7 +226,7 @@ def get_split_cifar100(args):
 def get_miniimagenet(args):
 
     print('loading miniimagenet dataset')
-    ROOT_PATH = '/media/zheshiyige/Expansion/meta_model_merge/Miniimagenet/'
+    ROOT_PATH = '/Data/Miniimagenet/'
 
     args.use_conv = True
     args.n_tasks   = 20

@@ -57,8 +57,6 @@ def WGF_retrieve_replay_update(args, model, opt, input_x, input_y, buffer, task,
     updated_inds = None
     hid = model.return_hidden(input_x)
     logits = model.linear(hid)
-    if args.multiple_heads:
-        logits = logits.masked_fill(loader.dataset.mask == 0, -1e9)
     loss_a = F.cross_entropy(logits, input_y, reduction='none')
     loss = (loss_a).sum() / loss_a.size(0)
 

@@ -59,9 +59,9 @@ parser.add_argument('--wandb_project', type=str, default='WGF',
 parser.add_argument('-m','--method', type=str, default='no_rehearsal', choices=['SVGD', 'SGLD', 'no_rehearsal'])
 parser.add_argument('--lr', type=float, default=0.1)
 parser.add_argument('--gamma', type=float, default=0.2)
-parser.add_argument('--T_adv', type=int, default=5)
-parser.add_argument('--beta', type=float, default=0.02)
-parser.add_argument('--stepsize', type=float, default=0.0001)
+parser.add_argument('--T_adv', type=int, default=5, help="number of memory evolution steps at each CL step")
+parser.add_argument('--beta', type=float, default=0.02, help="weight of evolved memory data loss at each CL step")
+parser.add_argument('--stepsize', type=float, default=0.0001, help="memory evolution learning rate")
 
 args = parser.parse_args()
 

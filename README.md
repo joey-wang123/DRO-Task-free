@@ -6,6 +6,9 @@
 - Pytorch 1.8.1
 
 
+**Note :** Our current implementation achieves better results across various hyperparameters than the results in our paper. For example, we can achieve around 38% on CIFAR10 (memory 500), more than 21.5% on CIFAR100 (memory 5000), more than 28% on mini-ImageNet (memory 10000) even combined with simple experience replay (ER) baseline. Our current implementation does not include the gradient dot product constraint since it has little gains but increases computation cost. 
+
+
 ## Download DataSet
 
 Download mini-ImageNet dataset from [here](https://drive.google.com/file/d/1Qkng7kPnL5akXzqvsjLMuP5rFfFZXYy0/view?usp=sharing) and put the dataset into the '/Data' folder.

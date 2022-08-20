@@ -24,8 +24,8 @@ parser.add_argument('-u', '--unit_test', action='store_true',
     help='unit testing mode for fast debugging')
 parser.add_argument('--hyper_search', '--hyper_search or not', action='store_true',
     help='hyper_search or not')
-parser.add_argument('-d', '--dataset', type=str, default = 'split_mnist',
-    choices=['split_mnist', 'permuted_mnist', 'split_cifar10', 'split_cifar100', 'miniimagenet'])
+parser.add_argument('-d', '--dataset', type=str, default = 'split_cifar10',
+    choices=['split_cifar10', 'split_cifar100', 'miniimagenet'])
 parser.add_argument('--n_tasks', type=int, default=-1,
     help='total number of tasks. -1 does default amount for the dataset')
 parser.add_argument('-r','--reproc', type=int, default=1,

@@ -76,7 +76,6 @@ def get_split_cifar10(args):
     args.n_tasks   = 5
     args.n_classes = 10
     args.buffer_size = args.n_tasks * args.mem_size * 2
-    args.multiple_heads = False
     args.use_conv = True
     args.n_classes_per_task = 2
     args.input_size = [3, 32, 32]
@@ -152,7 +151,6 @@ def get_split_cifar100(args):
     args.n_tasks   = 20
     args.n_classes = 100
     args.buffer_size = args.n_tasks * args.mem_size * 5
-    args.multiple_heads = False
     args.use_conv = True
     args.n_classes_per_task = 5
     args.input_size = [3, 32, 32]
@@ -231,7 +229,6 @@ def get_miniimagenet(args):
     args.use_conv = True
     args.n_tasks   = 20
     args.n_classes = 100
-    args.multiple_heads = False
     args.n_classes_per_task = 5
     args.input_size = (3, 84, 84)
     label2id = {}

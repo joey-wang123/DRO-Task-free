@@ -20,31 +20,31 @@ Download mini-ImageNet dataset from [here](https://drive.google.com/file/d/1Qkng
 
 ER baseline + SGLD on CIFAR10:  </br>
 
-`python er_main.py --method SGLD --lr 0.1 --samples_per_task -1 --dataset split_cifar10 --disc_iters 1 --mem_size 50 --suffix 'ER' --buffer_batch_size 10 --batch_size 10 --hyper_search --robust`
+`python er_main.py --method SGLD --lr 0.1 --samples_per_task -1 --dataset split_cifar10 --disc_iters 1 --mem_size 50 --suffix 'ER' --buffer_batch_size 10 --batch_size 10 --hyper_search`
 
 
 ER baseline + SVGD on CIFAR10:  </br>
 
-`python er_main.py --method SVGD --lr 0.1 --samples_per_task -1 --dataset split_cifar10 --disc_iters 1 --mem_size 50 --suffix 'ER' --buffer_batch_size 10 --batch_size 10 --hyper_search --robust`
+`python er_main.py --method SVGD --lr 0.1 --samples_per_task -1 --dataset split_cifar10 --disc_iters 1 --mem_size 50 --suffix 'ER' --buffer_batch_size 10 --batch_size 10 --hyper_search`
 
 
 ER baseline + SGLD on CIFAR100:  </br>
 
-`python er_main.py --method SGLD --lr 0.1 --samples_per_task -1 --dataset split_cifar100 --disc_iters 3 --mem_size 50 --suffix 'ER' --buffer_batch_size 10 --batch_size 10 --hyper_search --robust`
+`python er_main.py --method SGLD --lr 0.1 --samples_per_task -1 --dataset split_cifar100 --disc_iters 3 --mem_size 50 --suffix 'ER' --buffer_batch_size 10 --batch_size 10 --hyper_search`
 
 
 ER baseline + SVGD on CIFAR100:  </br>
 
-`python er_main.py --method SVGD --lr 0.1 --samples_per_task -1 --dataset split_cifar100 --disc_iters 3 --mem_size 50 --suffix 'ER' --buffer_batch_size 10 --batch_size 10 --hyper_search --robust`
+`python er_main.py --method SVGD --lr 0.1 --samples_per_task -1 --dataset split_cifar100 --disc_iters 3 --mem_size 50 --suffix 'ER' --buffer_batch_size 10 --batch_size 10 --hyper_search`
 
 
 ER baseline + SGLD on mini-ImageNet:  </br>
 
-`python er_main.py --method SGLD --lr 0.1 --samples_per_task -1 --dataset miniimagenet --disc_iters 3 --mem_size 100 --suffix 'ER' --buffer_batch_size 10 --batch_size 10 --hyper_search --robust`
+`python er_main.py --method SGLD --lr 0.1 --samples_per_task -1 --dataset miniimagenet --disc_iters 3 --mem_size 100 --suffix 'ER' --buffer_batch_size 10 --batch_size 10 --hyper_search`
 
 ER baseline + SVGD on mini-ImageNet:  </br>
 
-`python er_main.py --method SVGD --lr 0.1 --samples_per_task -1 --dataset miniimagenet --disc_iters 3 --mem_size 100 --suffix 'ER' --buffer_batch_size 10 --batch_size 10 --hyper_search --robust`
+`python er_main.py --method SVGD --lr 0.1 --samples_per_task -1 --dataset miniimagenet --disc_iters 3 --mem_size 100 --suffix 'ER' --buffer_batch_size 10 --batch_size 10 --hyper_search`
 
 
 

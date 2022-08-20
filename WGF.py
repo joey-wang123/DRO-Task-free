@@ -20,7 +20,7 @@ cross_entropy = lambda y, t_s : -torch.sum(F.log_softmax(y, dim=-1)*F.softmax(t_
 mse = torch.nn.MSELoss()
 
 
-def WGF_retrieve_replay_update(args, model, opt, input_x, input_y, buffer, task,  loader = None, rehearse=True, robust= True):
+def WGF_retrieve_replay_update(args, model, opt, input_x, input_y, buffer, task,  loader = None, rehearse=True):
     """ WGF for updating memory buffer """
 
 
@@ -74,11 +74,7 @@ def WGF_retrieve_replay_update(args, model, opt, input_x, input_y, buffer, task,
 
     logits_buffer = model(mem_x)
     normal_loss = F.cross_entropy(logits_buffer, mem_y)
-    if robust:
-        total_loss = normal_loss + args.beta*adv_loss
-    else:
-        total_loss = normal_loss
-
+    total_loss = normal_loss + args.beta*adv_loss
     total_loss.backward()
 
     if updated_inds is not None:

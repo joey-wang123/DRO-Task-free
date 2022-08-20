@@ -4,7 +4,7 @@ import numpy as np
 
 
 from data   import *
-from mir    import *
+from WGF    import *
 from utils  import get_logger, get_temp_logger, logging_per_task
 from buffer import Buffer
 import copy
@@ -22,8 +22,6 @@ parser.add_argument('--result_dir', type=str, default='Results',
     help='directory where we save results and samples')
 parser.add_argument('-u', '--unit_test', action='store_true',
     help='unit testing mode for fast debugging')
-parser.add_argument('--robust', '--robust training or not', action='store_true',
-    help='robust training or not')
 parser.add_argument('--hyper_search', '--hyper_search or not', action='store_true',
     help='hyper_search or not')
 parser.add_argument('-d', '--dataset', type=str, default = 'split_mnist',
@@ -54,13 +52,11 @@ parser.add_argument('--update_buffer_hid', type=int, default=1,
 # logging
 parser.add_argument('-l', '--log', type=str, default='off', choices=['off', 'online'],
     help='enable WandB logging')
-parser.add_argument('--wandb_project', type=str, default='mir',
+parser.add_argument('--wandb_project', type=str, default='WGF',
     help='name of the WandB project')
 
-#------ MIR -----#
+#------ WGF -----#
 parser.add_argument('-m','--method', type=str, default='no_rehearsal', choices=['SVGD', 'SGLD', 'no_rehearsal'])
-parser.add_argument('--compare_to_old_logits', action='store_true',help='uses old logits')
-parser.add_argument('--reuse_samples', type=int, default=0)
 parser.add_argument('--lr', type=float, default=0.1)
 parser.add_argument('--gamma', type=float, default=0.2)
 parser.add_argument('--T_adv', type=int, default=5)
@@ -163,7 +159,6 @@ def train(args):
                             sum([np.prod(p.size()) for p in model.parameters()]))
                     print("buffer parameters: ", np.prod(buffer.bx.size()))
 
-                print('args.multiple_heads', args.multiple_heads)
                 #----------
                 # Task Loop
                 for task, tr_loader in enumerate(train_loader):
@@ -201,7 +196,7 @@ def train(args):
                                 rehearse = task>0
                             if args.method == 'SVGD' or args.method == 'SGLD':
                                 model = WGF_retrieve_replay_update(args,
-                                                    model, opt, data, target, buffer, task, tr_loader,rehearse=rehearse, robust=args.robust)
+                                                    model, opt, data, target, buffer, task, tr_loader,rehearse=rehearse)
 
                         buffer.add_reservoir(data, target, None, task)
 
@@ -228,9 +223,6 @@ def train(args):
                                     data, target = data.to(args.device), target.to(args.device)
 
                                 logits = model(data)
-
-                                if args.multiple_heads:
-                                    logits = logits.masked_fill(te_loader.dataset.mask == 0, -1e9)
 
                                 loss = F.cross_entropy(logits, target)
                                 pred = logits.argmax(dim=1, keepdim=True)
